@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Client {
 
 	public static void main(String[] args) {
-		try (Socket socket = new Socket("127.0.0.1", 8080); Scanner scanner = new Scanner(System.in)) {
+		try (Socket socket = new Socket("localhost", 8080); Scanner scanner = new Scanner(System.in)) {
 
 						
 			Thread fromServerThread = new Thread(new Runnable() {
@@ -34,6 +34,7 @@ public class Client {
 				String text = scanner.nextLine();
 
 				if (text.equals("exit")) {
+					
 					break;
 				}
 				new DataOutputStream(socket.getOutputStream()).writeUTF(text);
